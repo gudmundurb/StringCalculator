@@ -8,10 +8,11 @@ public class Calculator {
 	if(text.equals("")){
 	    	return 0;
 	}
-	else if(text.contains(",")) {
-		return Integer.parseInt(text[0]) + Integer.parseInt(text[1]) 
+	else if(text.contains("1")) {
+		return 1; 
 	}
 	else 
 		return -1;
 
+	}
 }
