@@ -60,4 +60,9 @@ public class CalculatorTest {
 	
 		 assertEquals(42, Calculator.add("1001,2,40"));
 	}
+	@Test
+	public void delimitersOfAnyLength() {
+	
+		 assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+	}
 }
