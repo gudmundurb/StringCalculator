@@ -37,7 +37,8 @@ public class Calculator {
         private static int sum(String[] numbers){
  	    int total = 0;
             for(String number : numbers){
-	    	if(isInt(number)){
+	    	number = number.trim();
+		if(isInt(number)){
 		  if(toInt(number) > 1000){
 		  	continue;
 		  }
@@ -56,7 +57,18 @@ public class Calculator {
 	}
 	private static int changeDelim(String numbers) {
 	  String delimiter = "";
-	  delimiter = Character.toString(numbers.charAt(2));
+	  if(numbers.contains("[") && numbers.contains("]")){
+	    String [] Delimiters;
+	    Delimiters = numbers.split("]|/");
+	      for(String n : Delimiters){
+	      	if(n.contains("[")){
+		  n = n.replace("[", "");
+		  numbers = numbers.replace(n, ",");
+		}
+	     }
+	   }
+	  
+	  delimiter = Character.toString(numbers.charAt(2)).trim();
 	  numbers = numbers.replace(delimiter, ",");
 	  return newLine(numbers);
 
