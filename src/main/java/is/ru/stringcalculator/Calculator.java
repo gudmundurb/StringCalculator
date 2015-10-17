@@ -2,11 +2,15 @@ package is.ru.stringcalculator;
 public class Calculator {
 
 	public static int add(String text){
-  	
+	  try{
+		negative(splitNumbers(text));
+	  }catch(Exception negativeNumber){
+	
+	  }
 	if(text.isEmpty()){
  		return 0;
 	}
-	else if(text.contains("//") && text.contains("\n"))  {
+	else if(text.startsWith("//") && text.contains("\n"))  {
 		
 		return changeDelim(text);
 	}
@@ -58,6 +62,24 @@ public class Calculator {
 		numbers = numbers.replace("\n" , ",");
 		return sum(splitNumbers(numbers));
 	
+	
+	}
+	private static void negative(String[] numbers) throws Exception {
+	
+		String negative = "";
+		for (String number : numbers) {
+			if (isInt(number)){
+				if(toInt(number) < 0) {
+					negative += number+",";
+				
+				}
+			
+			}
+			if(!negative.equals("")) {
+				throw new Exception("Negatives not allowed: " + negative);
+			}
+			
+		}
 	
 	}
 }
